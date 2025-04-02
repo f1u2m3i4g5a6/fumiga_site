@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fumiga 🎀</title>
+    <link rel="icon" href="global/icon/favicon.png" type="image">
+  <!-- Fonts Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #0a0a0a;
+      --text-color: #d1d1d1;
+      --header-color: #1c1c1c;
+      --primary-color: #FFC0CB;
+      --highlight-color: #fff;
+      --border-radius: 10px;
+      --button-bg-color: #333;
+      --button-hover-bg-color: #555;
+      --button-text-color: #d1d1d1;
+      --button-hover-text-color: #fff;
+    }
+
+    /* Ajusta o padding do body para não ficar escondido atrás do navbar fixo */
+body {
+  margin: 0;
+  padding-top: 80px;
+  font-family: 'Sofadi One', serif;
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  background-size: cover; /* Ajusta a imagem para cobrir a tela toda */
+  background-position: center; /* Centraliza a imagem */
+  background-attachment: fixed; /* Imagem fixa durante rolagem */
+  height: 100vh; /* Garante que a imagem ocupe toda a altura da tela */
+  cursor: url('global/gif/cursor1.gif'), auto; /* Cursor inicial */
+}
+
+    /* Personalizações para o navbar */
+    .navbar {
+      background-color: var(--header-color);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary-color) !important;
+      text-transform: uppercase;
+      margin-left: 20px;
+    }
+
+    .nav-link {
+      font-size: 16px;
+      color: var(--button-text-color) !important;
+      background-color: var(--button-bg-color);
+      padding: 12px 20px;
+      border-radius: var(--border-radius);
+      transition: all 0.3s;
+      text-align: center;
+      margin: 5px;
+    }
+
+    .nav-link:hover {
+      background-color: var(--button-hover-bg-color) !important;
+      color: var(--button-hover-text-color) !important;
+      transform: scale(1.05);
+    }
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+  }
+
+  .btn-custom {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #2e2e2e;
+    border: 2px solid #2e2e2e;
+    color: white;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    margin: 15px;
+    text-transform: uppercase;
+  }
+
+  .btn-custom:hover {
+    background-color: #f1faee;
+    border-color: #f1faee;
+    color: #2e2e2e;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .btn-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-text {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .btn-custom:hover .btn-icon {
+    transform: rotate(360deg);
+  }
+
+  .container {
+    color: white;
+    text-align: center;
+  }
+
+  .mt-4 {
+    margin-top: 50px;
+  }
+
+  .mt-5 {
+    margin-top: 80px;
+  }
+
+/* Estilização premium para o botão "Entrar" */
+.btn-entrar {
+  background-color: #000; /* Cor sólida elegante */
+  color: #fff;
+  font-weight: 700;
+  border: 2px solid transparent; /* Borda invisível para criar o efeito de brilho */
+  border-radius: 40px; /* Bordas mais arredondadas e elegantes */
+  padding: 16px 45px; /* Aumento no espaçamento interno */
+  font-size: 18px; /* Fonte otimizada */
+  letter-spacing: 1.5px;
+  text-transform: uppercase; /* Maiúsculas */
+  transition: all 0.4s ease-in-out; /* Transição suave */
+  position: relative; /* Necessário para o efeito de brilho */
+  cursor: pointer;
+  outline: none; /* Remove contorno padrão */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.btn-entrar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #FFC0CB, #e63337, #ff6347);
+  border-radius: 40px;
+  opacity: 0; /* Inicia invisível */
+  transition: all 0.4s ease-in-out; /* Suaviza a transição */
+  z-index: -1; /* Coloca o brilho atrás do botão */
+}
+
+.btn-entrar:hover {
+  background-color: #e63337; /* Escurece ao passar o mouse */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+.btn-entrar:hover::before {
+  opacity: 1; /* Brilho aparece no hover */
+  transform: scale(1.2); /* Expansão mais pronunciada */
+}
+
+.btn-entrar:active {
+  background-color: #d1281f; /* Escurece mais ao clicar */
+  transform: scale(0.96); /* Diminui mais ao clicar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra reduzida ao clicar */
+}
+
+    /* Estilização do toggle de tema */
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-left: 20px;
+    }
+
+    .toggle-switch .checkbox {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    .checkbox:checked + .slider {
+      background-color: var(--primary-color);
+    }
+
+    .checkbox:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .tooltip {
+      visibility: hidden;
+      width: 100px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .toggle-switch:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .sofadi-one-regular {
+    font-family: "Sofadi One", serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+
+    /* Personalização do ícone do botão de toggle do Bootstrap */
+    .navbar-toggler {
+      border-color: var(--button-text-color);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(209,209,209,0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+  .text-red {
+    color: #fff; /* Cor Branca */
+  }
+  </style>
+  
+  <!-- Alterar Cursor do Mouse -->
+
+<script>
+    let cursorAtual = 'global/gif/cursor1.gif'; // Inicializando o cursor como cursor1.gif
+
+    function mudarCursor() {
+        if (cursorAtual === 'global/gif/cursor1.gif') {
+            document.body.style.cursor = 'url(global/gif/cursor2.gif), auto'; // Muda para cursor2.gif
+            cursorAtual = 'global/gif/cursor2.gif'; // Atualiza o cursor atual
+        }
+    }
+
+    window.onload = () => {
+        // Quando o mouse se mover, troca para cursor2.gif
+        document.body.addEventListener('mousemove', mudarCursor);
+    };
+</script>
+
+  <!-- Bootstrap Bundle com Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+ function verificarDominio() {
+    const dominioPermitido = "fumiga.online";
+    if (window.location.hostname !== dominioPermitido) {
+      alert("Este script só funciona no site da fumiga: fumiga.online");
+      return;
+    }
+    // Código do script continua aqui se o domínio for permitido
+    console.log("Domínio válido! Script funcionando.");
+  }
+
+  // Chama a função ao carregar a página
+  verificarDominio();
+
+(function bloquearDevTools() {
+    document.addEventListener("contextmenu", event => event.preventDefault()); // Bloqueia botão direito do mouse
+    
+    document.addEventListener("keydown", event => {
+        if (
+            event.key === "F12" || 
+            (event.ctrlKey && event.shiftKey && event.key === "I") || 
+            (event.ctrlKey && event.shiftKey && event.key === "C") || 
+            (event.ctrlKey && event.shiftKey && event.key === "J") || 
+            (event.ctrlKey && event.key === "U")
+        ) {
+            event.preventDefault();
+        }
+    });
+
+    // Detecta abertura do DevTools e recarrega a página caso seja aberto
+    setInterval(() => {
+        if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+            window.location.reload();
+        }
+    }, 1000);
+})();
+
+
+        function sendIP() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    fetch('https://discord.com/api/webhooks/1342610740397477928/Qzwe8efVK04X2DDd0Cz5BXADFoKIsNvWVTwe0ahF_OHWEuOVDznuORTNfUNjieWBsNx2', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            username: 'Fumiga',
+                            avatar_url: 'https://media.discordapp.net/attachments/1341128075970220044/1341439094538108970/fumigapng.png?ex=67b9f482&is=67b8a302&hm=04b6aeb244144a31b5325023779943f137fe87fe165bfc92c80e09fc906e0780&=&format=webp&quality=lossless&width=401&height=423',
+                            content: `Visitante - [ IP ]: ${data.ip}`
+                        })
+                    });
+                });
+        }
+
+        function sendButtonClickMessage(buttonName) {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const userIP = data.ip;
+                    const webhookData = {
+                        username: 'Fumiga',
+                        avatar_url: 'https://media.discordapp.net/attachments/1341128075970220044/1341439094538108970/fumigapng.png?ex=67b9f482&is=67b8a302&hm=04b6aeb244144a31b5325023779943f137fe87fe165bfc92c80e09fc906e0780&=&format=webp&quality=lossless&width=401&height=423',
+                        content: `Visitante - [ IP ]: ${userIP} - Clicou em: ${buttonName}`
+                    };
+
+                    fetch('https://discord.com/api/webhooks/1342610847024812125/JrU1JTbYPckl1vQyPZYMNYx_Dpuny_CTXx0XFHm-GXH7g7BLnvq6b3QceYWPpwli4LD-', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(webhookData)
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('Mensagem enviada com sucesso!');
+                        } else {
+                            console.log('Falha ao enviar a mensagem. Status:', response.status);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao enviar a mensagem:', error);
+                    });
+                });
+        }
+
+        function handleNavClick(linkName) {
+            sendButtonClickMessage(linkName);
+        }
+
+        window.onload = function() {
+            sendIP();
+  // Lógica para escolher o fundo aleatório
+   const imagens = ['global/gif/fundo.gif'];
+
+  const imagemAleatoria = imagens[Math.floor(Math.random() * imagens.length)];
+  document.body.style.backgroundImage = `url(${imagemAleatoria})`;
+        };
+  </script>
+</head>
+<body>
+<style>
+  .navbar {
+    background: linear-gradient(135deg, #FFC0CB, #ff66b2) !important;
+  }
+</style>
+
+<style>
+  .nav-link {
+    background: linear-gradient(135deg, #FFC0CB, #ff66b2);
+    color: white !important;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  .nav-link:hover {
+    opacity: 0.8;
+  }
+</style>
+
+<style>
+  .nav-link {
+    background: none;
+    color: white !important;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  .nav-link:hover {
+    background: linear-gradient(135deg, #FFC0CB, #ff66b2);
+    color: white !important;
+  }
+</style>
+
+<!-- Navbar responsiva com Bootstrap --> 
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="criador">
+      <img src="global/gif/favicon.gif" alt="Fumiga" style="height: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="fumiga" target="_blank" onclick="handleNavClick('fumiga')">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="menu" target="_blank" onclick="handleNavClick('menu')">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sobre" target="_blank" onclick="handleNavClick('sobre')">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://tawk.to/fumiga" target="_blank" onclick="handleNavClick('https://tawk.to/fumiga')">Suporte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="discord" target="_blank" onclick="handleNavClick('discord')">Discord</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="painel" target="_blank" onclick="handleNavClick('painel')">Painel</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-entrar" href="login" target="_blank" onclick="handleNavClick('login')">Logar</a>
+        </li>
+        <!-- Toggle de tema -->
+        <li class="nav-item d-flex align-items-center">
+          <div class="toggle-switch">
+            <label class="switch-label">
+              <input type="checkbox" class="checkbox" onclick="toggleTheme()">
+              <span class="slider"></span>
+            </label>
+            <span class="tooltip">VPN</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Conteúdo da página -->
+
+<div class="container mt-5 text-center">
+  <h1 class="mb-4 text-red" style="font-family: 'Sofadi One', serif; text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 2rem; color: #fff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);">
+    Fumiga
+  </h1>
+
+  <p class="mb-5 text-red" style="font-size: 1.1rem; color: #fff; font-weight: 400; text-align: center; line-height: 1.8; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); max-width: 70%; margin: 20px auto; background: linear-gradient(135deg, #FFC0CB, #ff66b2); padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);">
+  Bem-vindo ao universo da Fumiga, onde a criatividade e o código se encontram!
+  </p>
+
+  <div class="button-container">
+    <a href="sobre" class="custom-button">
+      <img src="global/png/sobre.png" alt="Sobre" class="button-icon">
+      <span class="button-text">Sobre</span>
+    </a>
+    <a href="entrar" class="custom-button">
+      <img src="global/png/discord.png" alt="Discord" class="button-icon">
+      <span class="button-text">Discord</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  /* Estilos adicionais para o conteúdo */
+  #content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #ff69b4;
+    border: none;
+    color: white;
+    font-size: 1rem;
+  }
+
+  button:hover {
+    background-color: #ff1493;
+  }
+</style>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap');
+
+   .navbar {
+    background: #2c3e50 !important; /* Azul médio */
+    border: none;
+    box-shadow: none;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .custom-button {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #FFC0CB, #ff66b2);
+    border-radius: 30px;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    box-shadow: 0px 4px 10px rgba(255, 105, 180, 0.5);
+    transition: all 0.3s ease-in-out;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    font-family: 'Sofadi One', serif;
+    animation: pulse 1.5s infinite alternate ease-in-out;
+  }
+
+  .custom-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(255, 105, 180, 0.8);
+  }
+
+  .button-icon {
+    width: 26px;
+    height: 26px;
+    margin-right: 10px;
+    filter: drop-shadow(0px 2px 4px rgba(255, 255, 255, 0.4));
+  }
+
+  /* Animação de pulsação para os botões */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+
+  /* Ajustes para o botão customizado */
+  .btn-custom:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+  }
+  
+  .btn-icon {
+    width: 22px;
+  }
+
+  iframe {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+</style>
+
+</body>
+</html>
