@@ -1,0 +1,5 @@
+   .navbar {
+    background: #2c3e50 !important; /* Azul escuro levemente mais claro */
+    border: none;
+    box-shadow: none;
+  }
